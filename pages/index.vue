@@ -15,7 +15,7 @@
         pageSize: 10
       }).then(res => {
         return {
-          data: res.data
+          data: res.data.data,
         }
       })
     },

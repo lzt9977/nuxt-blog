@@ -25,34 +25,38 @@
 
 <script>
   import fetch from '../plugins/fetch'
+
   export default {
     props: ['data'],
-    data(){
+    data () {
       return {
         currentPage: 1,
-        dataList: this.data
+        dataList: this.data,
       }
     },
     methods: {
-      jump(current) {
+      jump (current) {
         fetch('/api/getArticlesList', {
           page: current,
-          pageSize: 10
+          pageSize: 10,
         }).then(res => {
           this.dataList = res.data.data
         })
-      }
-    }
+      },
+    },
+    mounted () {
+      console.log(this.data)
+    },
   }
 </script>
 
 <style scoped>
-  .time{
+  .time {
     font-size: 12px;
     color: #999;
   }
 
-  .list{
+  .list {
     margin-bottom: 20px;
   }
 </style>

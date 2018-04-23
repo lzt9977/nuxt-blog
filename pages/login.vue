@@ -33,6 +33,7 @@
 
 <script>
   import fetch from '../plugins/fetch'
+  import axios from 'axios'
   export default {
     data(){
       return {
@@ -78,10 +79,9 @@
       login(){
         this.$refs['loginForm'].validate(valid => {
           if(valid){
-            fetch('/api/login', this.loginForm).then(res => {
-              console.log(res)
+            axios.post('http://localhost:3000/api/login', this.loginForm).then(res => {
               if(res.data.code === 0){
-                sessionStorage.setItem('token', res.data.data.token)
+                this.$store.dispatch('nuxtServerInit')
               }
             })
           }
