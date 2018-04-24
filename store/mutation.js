@@ -1,14 +1,14 @@
 import {
   NAV_INDEX,
-  IS_LOGIN
+  SET_TOKEN
 } from './mutation-type'
 
 const mutations = {
   [NAV_INDEX] (state, index) {
     state.navIndex = index
   },
-  [IS_LOGIN] (state, session){
-    state.isLogin = session
+  [SET_TOKEN] (state, token){
+    state.token = token
   }
 }
 

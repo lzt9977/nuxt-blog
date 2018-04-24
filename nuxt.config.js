@@ -4,14 +4,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'starter',
+    title: 'nuxt-blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { hid: 'description', name: 'description', content: 'nuxt-blog' }
     ]
   },
   env: {
@@ -29,11 +26,16 @@ module.exports = {
     '@nuxtjs/proxy',
   ],
   plugins: ['~plugins/element-ui'],
+  loading: {
+    color: '#ff7e79',
+    height: '3px'
+  },
   build: {
     vendor: [
       'element-ui',
       'axios',
-      '~/plugins/fetch.js'
+      '~/plugins/fetch.js',
+      'moment'
     ],
   },
   babel: {

@@ -8,8 +8,8 @@
       active-text-color="#ffd04b"
       @select="jump"
     >
-      <el-menu-item v-for="(item, index) in navItems" :index="index + ''" :key="index" >
-        <router-link :to="{path: item.link}" active-class="active">{{item.name}}</router-link>
+      <el-menu-item v-for="(item, index) in navItems" :index="item.link + ''" :key="index" @click="jump(item.link)">
+        <router-link :to="{path: item.link}" class="link">{{item.name}}</router-link>
       </el-menu-item>
     </el-menu>
   </el-header>
@@ -17,6 +17,14 @@
 
 <script>
   export default {
+    created(){
+      this.$store.commit('NAV_INDEX', `/${this.$route.path.split('/')[1]}`)
+    },
+    watch: {
+      '$route'(newVal){
+        this.$store.commit('NAV_INDEX', `/${newVal.path.split('/')[1]}`)
+      }
+    },
     data(){
       return {
         navItems: [
@@ -37,5 +45,11 @@
   .header{
     background: #545c64;
     width: 100%;
+  }
+
+  .link{
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 </style>

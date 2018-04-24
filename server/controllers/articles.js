@@ -14,8 +14,13 @@ export default async (ctx, next) => {
     const articlesList = await articles.skip((body.page - 1) * body.pageSize).limit(body.pageSize)
     const articlesSize = await articles.count()
 
+    const list = articlesList.map(item => {
+      item.content = item.content.length > 150 ? `${item.content.substring(0,150)}...` : item.content
+      return item
+    })
+
     ctx.body = errorCode(0, {
-      list: articlesList,
+      list: list,
       total: articlesSize,
       pageSize: body.pageSize
     })

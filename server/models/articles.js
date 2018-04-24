@@ -30,7 +30,7 @@ const model = {
   },
   // 创建时间
   createTime: {
-    type: Date,
+    type: String,
   },
   // 作者
   author: {
@@ -47,7 +47,7 @@ const model = {
   },
   // 更新时间
   updateTime: {
-    type: Date,
+    type: String,
     default: Date.now()
   },
 }

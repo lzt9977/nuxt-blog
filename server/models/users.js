@@ -4,8 +4,8 @@ const model = {
   username: {
     type: String,
     index: {
-      unique: true
-    }
+      unique: true,
+    },
   },
   password: String
 }

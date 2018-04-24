@@ -1,17 +1,6 @@
 <template>
   <div>
-    <router-link v-for="(item, index) in dataList.list" :key="index" :to="`/${item.id}`">
-      <el-card shadow="hover" class="list">
-        <div slot="header">
-          <span>{{item.title}}</span>
-          <div class="time">{{item.createTime}}</div>
-        </div>
-
-        <div>
-          <p class="text">{{item.content}}</p>
-        </div>
-      </el-card>
-    </router-link>
+    <ArticleTemplate v-for="(item, index) in dataList.list" :key="index" :data="item"></ArticleTemplate>
 
     <el-pagination
       v-if="dataList.total > 10"
@@ -25,8 +14,13 @@
 
 <script>
   import fetch from '../plugins/fetch'
+  import ArticleTemplate from './articleTemplate'
+  import moment from 'moment'
 
   export default {
+    components: {
+      ArticleTemplate
+    },
     props: ['data'],
     data () {
       return {
@@ -44,19 +38,9 @@
         })
       },
     },
-    mounted () {
-      console.log(this.data)
-    },
   }
 </script>
 
 <style scoped>
-  .time {
-    font-size: 12px;
-    color: #999;
-  }
 
-  .list {
-    margin-bottom: 20px;
-  }
 </style>

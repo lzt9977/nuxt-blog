@@ -27,5 +27,6 @@ export default {
   session: {
     secretKey: 'something'
   },
+  secret: 'qweqwqw',
   errorCode
 }

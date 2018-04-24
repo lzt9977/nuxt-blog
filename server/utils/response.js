@@ -1,7 +1,8 @@
 import config from '../config'
+import chalk from 'chalk'
 
 export default (code, data = {}) => {
-  console.error(`XXXX错误：${code}`)
+  console.log(chalk.yellow(`ErrorCode：${code}`))
   return {
     code: code,
     data,

@@ -5,8 +5,8 @@ import actions from './actions'
 Vue.use(Vuex)
 
 const state = {
-  navIndex: '0',
-  isLogin: false
+  navIndex: '/',
+  token: ''
 }
 
 const store = () => new Vuex.Store({

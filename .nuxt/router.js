@@ -3,8 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _37627973 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
-const _6dbad65c = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _0c02ae63 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
+const _2cc9c343 = () => import('../pages/articles/_article.vue' /* webpackChunkName: "pages/articles/_article" */).then(m => m.default || m)
+const _425b0b4c = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
 
@@ -66,12 +67,17 @@ export function createRouter () {
     routes: [
 		{
 			path: "/login",
-			component: _37627973,
+			component: _0c02ae63,
 			name: "login"
 		},
 		{
+			path: "/articles/:article?",
+			component: _2cc9c343,
+			name: "articles-article"
+		},
+		{
 			path: "/",
-			component: _6dbad65c,
+			component: _425b0b4c,
 			name: "index"
 		}
     ],
