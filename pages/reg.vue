@@ -3,7 +3,7 @@
     <el-col :span="8">
       <el-card>
         <div slot="header">
-          <span>登录</span>
+          <span>注册</span>
         </div>
         <el-form :model="loginForm" ref="loginForm" status-icon :rules="rules">
           <el-form-item prop="username">
@@ -23,7 +23,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="login" :loading="loading">登录</el-button>
+            <el-button type="primary" @click="reg" :loading="loading">注册</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -77,19 +77,17 @@
       }
     },
     methods: {
-      login(){
+      reg(){
         this.$refs['loginForm'].validate(valid => {
           if(valid){
             this.loading = true
-            fetch('/api/login', this.loginForm).then(res => {
+            fetch('/api/reg', this.loginForm).then(res => {
               this.loading = false
               if(res.data.code === 0){
                 this.$message({
-                  message: '登录成功',
+                  message: '注册成功',
                   type: 'success'
                 })
-                this.$store.commit('SET_TOKEN', res.data.data)
-                this.$router.push('/')
               }else{
                 this.$message.error(res.data.msg)
               }

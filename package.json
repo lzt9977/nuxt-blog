@@ -14,13 +14,18 @@
   },
   "repository": "https://github.com/lautiamkok/nuxt-koa",
   "dependencies": {
+    "@koa/cors": "^2.2.1",
     "@nuxtjs/axios": "^5.3.1",
     "@nuxtjs/proxy": "^1.2.4",
     "axios": "^0.16.2",
+    "babel-preset-latest-node": "^1.0.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "bcrypt": "^2.0.1",
     "chalk": "^2.4.0",
     "cross-env": "^5.0.1",
     "element-ui": "^2.3.6",
     "eslint": "^4.19.1",
+    "github-markdown-css": "^2.10.0",
     "jsonwebtoken": "^8.2.1",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
@@ -31,17 +36,21 @@
     "koa-static": "^4.0.1",
     "koa-trie-router": "^2.1.5",
     "locate-path": "^2.0.0",
+    "marked": "^0.3.19",
+    "mavon-editor": "^2.5.9",
+    "md5": "^2.2.1",
     "moment": "^2.22.1",
     "mongoose": "^5.0.15",
     "node-sass": "^4.8.3",
     "nuxt": "^1.0.0-rc3",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^7.0.1",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
     "backpack-core": "^0.4.1"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development backpack dev",
+    "dev": "cross-env NODE_ENV=development nodemon ./start.js",
     "build": "nuxt build && backpack build",
     "start": "cross-env NODE_ENV=production node build/main.js"
   },

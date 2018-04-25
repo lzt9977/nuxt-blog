@@ -19,7 +19,8 @@ module.exports = {
   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    { src: '~/assets/sass/main.scss', lang: 'scss' }
+    { src: '~/assets/sass/main.scss', lang: 'scss' },
+    '~/assets/css/github-markdown.css'
   ],
   modules: [
     '@nuxtjs/axios',

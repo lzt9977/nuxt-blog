@@ -10,7 +10,7 @@ const fetch = (url, data = {}, token = '') => {
       dataType: 'json',
       headers: {
         'Content-Type': 'application/json',
-        'token': token,
+        'Authorization': `Bearer ${token}`,
       },
     }).then(response => {
       resolve(response.data)

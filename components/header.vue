@@ -8,9 +8,7 @@
       active-text-color="#ffd04b"
       @select="jump"
     >
-      <el-menu-item v-for="(item, index) in navItems" :index="item.link + ''" :key="index" @click="jump(item.link)">
-        <router-link :to="{path: item.link}" class="link">{{item.name}}</router-link>
-      </el-menu-item>
+      <el-menu-item v-for="(item, index) in navItems" :index="item.link + ''" :key="index" @click="jump(item.link)">{{item.name}}</el-menu-item>
     </el-menu>
   </el-header>
 </template>
@@ -30,12 +28,15 @@
         navItems: [
           {name: '首页', link: '/'},
           {name: '登录', link: '/login'},
+          {name: '注册', link: '/reg'},
+          {name: '发布', link: '/publish'},
         ],
       }
     },
     methods: {
       jump(index){
         this.$store.commit('NAV_INDEX', index)
+        this.$router.push(index)
       }
     }
   }
@@ -45,11 +46,5 @@
   .header{
     background: #545c64;
     width: 100%;
-  }
-
-  .link{
-    display: block;
-    width: 100%;
-    height: 100%;
   }
 </style>

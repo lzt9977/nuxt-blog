@@ -50,6 +50,12 @@ const model = {
     type: String,
     default: Date.now()
   },
+  // 状态
+  status: {
+    type: String,
+    //pending 待审核 pass 通过
+    default: 'pending'
+  }
 }
 
 export default mongoose.model('Articles', model)

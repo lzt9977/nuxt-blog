@@ -3,7 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const _a40e8ae4 = () => import('../pages/reg.vue' /* webpackChunkName: "pages/reg" */).then(m => m.default || m)
 const _0c02ae63 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
+const _3bf92eee = () => import('../pages/publish.vue' /* webpackChunkName: "pages/publish" */).then(m => m.default || m)
 const _2cc9c343 = () => import('../pages/articles/_article.vue' /* webpackChunkName: "pages/articles/_article" */).then(m => m.default || m)
 const _425b0b4c = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
@@ -66,9 +68,19 @@ export function createRouter () {
     scrollBehavior,
     routes: [
 		{
+			path: "/reg",
+			component: _a40e8ae4,
+			name: "reg"
+		},
+		{
 			path: "/login",
 			component: _0c02ae63,
 			name: "login"
+		},
+		{
+			path: "/publish",
+			component: _3bf92eee,
+			name: "publish"
 		},
 		{
 			path: "/articles/:article?",

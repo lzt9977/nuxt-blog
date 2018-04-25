@@ -28,5 +28,6 @@ export default {
     secretKey: 'something'
   },
   secret: 'qweqwqw',
+  md5Key: 'this is md5 key',
   errorCode
 }

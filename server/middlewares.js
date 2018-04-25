@@ -10,15 +10,18 @@ export default (app) => {
 
   router.use('', routes.routes())
 
-  app
-  .use(router.routes())
-  .use(router.allowedMethods())
+  // app.use(cors())
 
   app.use(jwtKoa({
     secret: config.secret
   }).unless({
     path: [
-      /^(?!\/personal).*/
+      /^(?!\/api).*/,
+      /^\/api\/login/,
+      /^\/api\/reg/,
+      /^\/api\/getArticlesList/,
+      /^\/api\/getArticleDetail/,
+      /^\/api\/publish/,
     ]
   }))
 
@@ -53,6 +56,10 @@ export default (app) => {
   app.use(serve(config.static_dir.root))
 
   app.use(bodyParser())
+
+  app
+  .use(router.routes())
+  .use(router.allowedMethods())
 
   // auth check
 

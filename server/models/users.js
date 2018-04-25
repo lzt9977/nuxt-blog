@@ -7,7 +7,7 @@ const model = {
       unique: true,
     },
   },
-  password: String
+  password: String,
 }
 
 export default mongoose.model('Users', model)

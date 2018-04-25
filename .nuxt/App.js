@@ -5,6 +5,8 @@ import '../node_modules/_element-ui@2.3.6@element-ui/lib/theme-chalk/index.css'
 
 import '../assets/sass/main.scss'
 
+import '../assets/css/github-markdown.css'
+
 
 let layouts = {
 
