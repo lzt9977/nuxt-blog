@@ -9,6 +9,10 @@ export const login = async ctx => {
   try {
     const userInfo = await Users.findOne({username: body.username})
 
+    if(!userInfo){
+      return ctx.body = errorCode(100)
+    }
+
     const passCorrect = bcrypt.compareSync(body.password, userInfo.password)
 
     if(body.username === userInfo.username && passCorrect){

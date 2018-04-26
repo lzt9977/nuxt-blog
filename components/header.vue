@@ -44,7 +44,7 @@
         navItems: [
           {name: '首页', link: '/', isAuth: false},
           // {name: '登录', link: '/login', isAuth: false},
-          // {name: '注册', link: '/reg', isAuth: false},
+           {name: '注册', link: '/reg', isAuth: false},
           {name: '发布', link: '/publish', isAuth: true},
         ],
       }
