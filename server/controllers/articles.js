@@ -1,4 +1,5 @@
 import Articles from '../models/articles'
+import Users from '../models/users'
 import errorCode from '../utils/response'
 import jwt from 'jsonwebtoken'
 import config from '../config'
@@ -38,7 +39,7 @@ export const getArticleDetail = async ctx => {
   try{
     const { body } = ctx.request
 
-    const articles = await Articles.findOne({articleId: body.articleId})
+    const articles = await Articles.findOne({_id: body.articleId})
 
     ctx.body = errorCode(0, articles)
 
@@ -51,11 +52,30 @@ export const getArticleDetail = async ctx => {
 export const publishArticle = async ctx => {
   try{
     const token = ctx.request.header.authorization.split(' ')[1]
-    const decode = jwt.verify(token, config.secret)
 
-    console.log(decode)
+    await jwt.verify(token, config.secret, async (err, decoded) => {
+      if(err){
+        ctx.body = errorCode(400, err)
+      }else{
+        const { body } = ctx.request
 
-    ctx.body = errorCode(0)
+        if(!body.title || !body.content){
+          return ctx.body = errorCode(300)
+        }
+
+        const user = Users.findOne({username: decoded.username})
+
+        await Articles.create({
+          title: body.title,
+          content: String(body.content),
+          createTime: new Date().getTime(),
+          author: decoded.username,
+          uid: user._id
+        }).then(() => {
+          ctx.body = errorCode(0)
+        })
+      }
+    })
 
   }catch (err) {
     throw err

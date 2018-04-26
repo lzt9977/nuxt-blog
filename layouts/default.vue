@@ -1,10 +1,12 @@
 <template>
-  <el-container direction="vertical">
-    <Header></Header>
-    <el-main class="main-content">
-      <nuxt/>
-    </el-main>
-  </el-container>
+  <transition>
+    <el-container direction="vertical">
+      <Header></Header>
+      <el-main>
+        <nuxt/>
+      </el-main>
+    </el-container>
+  </transition>
 </template>
 
 <script>
@@ -63,7 +65,7 @@ html {
 }
 
 .main-content{
-  width: 1200px;
+  /*width: 1200px;*/
   margin: 0 auto;
 }
 </style>

@@ -36,7 +36,8 @@ module.exports = {
       'element-ui',
       'axios',
       '~/plugins/fetch.js',
-      'moment'
+      'moment',
+      'marked'
     ],
   },
   babel: {
@@ -48,4 +49,11 @@ module.exports = {
           styleLibraryName: 'theme-default',
         }]]],
   },
+  router: {
+    middleware: 'authCheck'
+  },
+  transition: {
+    name: 'page',
+    mode: 'out-in'
+  }
 }

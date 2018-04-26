@@ -63,9 +63,15 @@ export const reg = async ctx => {
 }
 
 export const logout = ctx => {
-  ctx.session = null
-
   try {
+    jwt.sign({
+      logout: 'logout'
+    }, config.secret, {
+      expiresIn: '1h'
+    })
+
+    ctx.cookies.set('token', '')
+
     ctx.body = errorCode(0)
   }catch (err) {
     ctx.body = errorCode(-1)

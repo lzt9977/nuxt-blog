@@ -12,13 +12,13 @@
           type="textarea"
           :rows="20"
           placeholder="请输入内容"
-          v-model="source"
+          v-model="content"
           resize="none"
           class="markdown-area"
         ></el-input>
       </el-col>
       <el-col :span="12" >
-        <el-card class="markdown-area scroll" :body-style="{padding: 0}">
+        <el-card shadow="never" class="markdown-area scroll" :body-style="{padding: '10px'}">
           <div v-html="getHtml" class="markdown-body"></div>
         </el-card>
       </el-col>
@@ -36,20 +36,41 @@
   export default {
     data(){
       return {
-        source: '',
+        content: '',
         loading: false,
         title: ''
       }
     },
     computed: {
       getHtml(){
-        return marked(this.source)
+        return marked(this.content)
       }
     },
     methods: {
       publish(){
-        fetch('/api/publish', {}, this.$store.state.token).then(res => {
+        if(!this.title){
+          return this.$message.error('请输入标题')
+        }
 
+        if(!this.content){
+          return this.$message.error('请输入文章内容')
+        }
+
+        this.loading = true
+
+        fetch('/api/publish', {
+          title: this.title,
+          content: this.content
+        }, this.$store.state.token).then(res => {
+          this.loading = false
+          if(res.data.code === 0){
+            this.$message({
+              message: '文章提交成功， 等待审核',
+              type: 'success'
+            })
+          }else{
+            this.$message.error(res.data.msg)
+          }
         })
       }
     }

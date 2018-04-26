@@ -4,6 +4,8 @@ import config from './config'
 import routes from './routes'
 import jwtKoa from 'koa-jwt'
 import Router from 'koa-router'
+import errorCode from './utils/response'
+import logger from 'koa-logger'
 
 export default (app) => {
   const router = new Router()
@@ -12,6 +14,8 @@ export default (app) => {
 
   // app.use(cors())
 
+  app.use(logger())
+
   app.use(jwtKoa({
     secret: config.secret
   }).unless({
@@ -19,11 +23,20 @@ export default (app) => {
       /^(?!\/api).*/,
       /^\/api\/login/,
       /^\/api\/reg/,
+      /^\/api\/logout/,
       /^\/api\/getArticlesList/,
       /^\/api\/getArticleDetail/,
-      /^\/api\/publish/,
+      // /^\/api\/publish/,
     ]
   }))
+
+  app.use(async (ctx, next) => {
+    if(ctx.status === 401){
+      ctx.body = errorCode(600)
+    }
+
+    await next()
+  })
 
   app.use(async (ctx, next) => {
     try {

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <ArticleTemplate v-for="(item, index) in dataList.list" :key="index" :data="item"></ArticleTemplate>
+    <router-link v-for="(item, index) in dataList.list" :key="index" :to="`/articles/${item._id}`">
+      <ArticleTemplate :data="item"></ArticleTemplate>
+    </router-link>
+
 
     <el-pagination
       v-if="dataList.total > 10"

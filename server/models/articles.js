@@ -7,13 +7,13 @@ const model = {
       unique: true,
     },
   },
-  // 文章id
-  articleId: {
-    type: Number,
-    index: {
-      unique: true,
-    },
-  },
+  // // 文章id
+  // articleId: {
+  //   type: Number,
+  //   index: {
+  //     unique: true,
+  //   },
+  // },
   // 内容
   content: {
     type: String,
@@ -22,11 +22,13 @@ const model = {
   tag: {
     type: String,
     index: true,
+    default: 'js'
   },
   // 分类
   category: {
     type: String,
     index: true,
+    default: 'js'
   },
   // 创建时间
   createTime: {
@@ -39,6 +41,7 @@ const model = {
   // 文章浏览量
   pv: {
     type: Number,
+    default: 0
   },
   // 发布文章的用户id
   uid: {
