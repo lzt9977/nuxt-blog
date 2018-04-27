@@ -3,11 +3,12 @@ import chalk from 'chalk'
 const log = console.log
 import config from '../config'
 
-const dblink = `mongodb://${config.database.host}:${config.database.port}/${config.database.dbname}`
-
-console.log(dblink)
-
-mongoose.connect(`mongodb://${config.database.host}:${config.database.port}/${config.database.dbname}`)
+mongoose.connect(`mongodb://${config.database.host}:${config.database.port}`, {
+  authSource: 'admin',
+  user: config.database.user,
+  pass: config.database.pass,
+  dbName: config.database.dbname
+})
 
 const db = mongoose.connection
 

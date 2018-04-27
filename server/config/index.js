@@ -1,6 +1,5 @@
 import errorCode from './errorCode'
-console.log(process.env.NODE_ENV)
-const dbname = process.env.NODE_ENV === 'development' ? 'user' : 'koa'
+const dbname = process.env.NODE_ENV === 'development' ? 'test' : 'prod'
 
 export default {
   app: {
@@ -11,14 +10,15 @@ export default {
     driver: 'mongo',
     host: '127.0.0.1',
     port: 27017,
-    dbname: 'user',
+    dbname: dbname,
     username: 'admin',
     password: '123456',
     options: {
     }
   },
   server: {
-    port: 3000
+    port: process.env.NODE_ENV === 'development' ? 80 : 3000,
+    host: process.env.NODE_ENV === 'development' ? '0.0.0.0' : '127.0.0.1'
   },
   static_dir: {
     root: './static',

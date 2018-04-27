@@ -6,8 +6,8 @@ import middlewares from './middlewares'
 import './models'
 
 const app = new Koa()
-const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || config.server.port
+const host = config.server.host
+const port = config.server.port
 
 const start = async () => {
   // Import and Set Nuxt.js options
