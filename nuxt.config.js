@@ -12,7 +12,7 @@ module.exports = {
     ]
   },
   env: {
-    HOST_URL: process.env.HOST_URL || 'http://127.0.0.1:3000'
+    HOST_URL: 'http://115.159.104.224' || 'http://127.0.0.1:3000'
   },
   /*
   ** Global CSS

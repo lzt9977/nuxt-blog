@@ -9,8 +9,6 @@ const app = new Koa()
 const host = config.server.host
 const port = config.server.port
 
-console.log(host)
-
 const start = async () => {
   // Import and Set Nuxt.js options
   let nuxtConfig = require('../nuxt.config.js')
