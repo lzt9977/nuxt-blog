@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const fetch = (url, data = {}, token = '') => {
-  const baseUrl = 'http://localhost:3000'
+  const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'http://115.159.104.224'
   return new Promise((resolve, reject) => {
     axios({
       method: 'post',
