@@ -18,7 +18,7 @@ export default {
   },
   server: {
     port: process.env.NODE_ENV === 'development' ? 3000 : 80,
-    host: process.env.NODE_ENV === 'development' ? '0.0.0.0' : '127.0.0.1'
+    host: process.env.NODE_ENV === 'development' ? '127.0.0.1' : '0.0.0.0'
   },
   static_dir: {
     root: './static',
