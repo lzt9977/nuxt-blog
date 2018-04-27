@@ -11,7 +11,7 @@ export default {
     driver: 'mongo',
     host: '127.0.0.1',
     port: 27017,
-    dbname: dbname,
+    dbname: 'user',
     username: 'admin',
     password: '123456',
     options: {

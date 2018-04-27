@@ -33,7 +33,7 @@ export const login = async ctx => {
 
   }catch (err) {
     ctx.body = errorCode(-1)
-    throw err
+    // throw err
   }
 }
 
@@ -62,7 +62,7 @@ export const reg = async ctx => {
 
   }catch (err) {
     ctx.body = errorCode(-1)
-    throw err
+    // throw err
   }
 }
 
