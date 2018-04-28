@@ -11,6 +11,8 @@ export default {
       }
 
       commit('SET_TOKEN', cookieObj.token)
+    }else{
+      commit('SET_TOKEN', '')
     }
   }
 }

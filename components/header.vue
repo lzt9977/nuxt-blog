@@ -72,6 +72,9 @@
         this.$router.push('/login')
       },
     },
+    created(){
+      console.log(this.$store.state)
+    }
   }
 </script>
 

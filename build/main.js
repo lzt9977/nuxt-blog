@@ -72,8 +72,7 @@ module.exports =
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errorCode__ = __webpack_require__(12);
 
-console.log("production");
-var dbname =  false ? 'user' : 'koa';
+var dbname =  false ? 'test' : 'prod';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   app: {
@@ -84,13 +83,14 @@ var dbname =  false ? 'user' : 'koa';
     driver: 'mongo',
     host: '127.0.0.1',
     port: 27017,
-    dbname: 'user',
+    dbname: dbname,
     username: 'admin',
     password: '123456',
     options: {}
   },
   server: {
-    port: 3000
+    port:  false ? 3000 : 80,
+    host:  false ? '127.0.0.1' : '0.0.0.0'
   },
   static_dir: {
     root: './static',
@@ -207,8 +207,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_koa___default.a();
-var host = process.env.HOST || '127.0.0.1';
-var port = process.env.PORT || __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].server.port;
+var host = __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].server.host;
+var port = __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].server.port;
 
 var start = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Users_jingangdong_Documents_nuxt_test_node_modules_babel_runtime_6_26_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
@@ -870,7 +870,7 @@ var login = function () {
               ctx.body = Object(__WEBPACK_IMPORTED_MODULE_2__utils_response__["a" /* default */])(100);
             }
 
-            _context.next = 15;
+            _context.next = 14;
             break;
 
           case 11:
@@ -878,9 +878,9 @@ var login = function () {
             _context.t0 = _context['catch'](1);
 
             ctx.body = Object(__WEBPACK_IMPORTED_MODULE_2__utils_response__["a" /* default */])(-1);
-            throw _context.t0;
+            // throw err
 
-          case 15:
+          case 14:
           case 'end':
             return _context.stop();
         }
@@ -941,7 +941,7 @@ var reg = function () {
             });
 
           case 16:
-            _context2.next = 22;
+            _context2.next = 21;
             break;
 
           case 18:
@@ -949,9 +949,9 @@ var reg = function () {
             _context2.t0 = _context2['catch'](0);
 
             ctx.body = Object(__WEBPACK_IMPORTED_MODULE_2__utils_response__["a" /* default */])(-1);
-            throw _context2.t0;
+            // throw err
 
-          case 22:
+          case 21:
           case 'end':
             return _context2.stop();
         }
@@ -1021,11 +1021,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var log = console.log;
 
 
-var dblink = 'mongodb://' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.host + ':' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.port + '/' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.dbname;
-
-console.log(dblink);
-
-__WEBPACK_IMPORTED_MODULE_1_mongoose___default.a.connect('mongodb://' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.host + ':' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.port + '/' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.dbname);
+__WEBPACK_IMPORTED_MODULE_1_mongoose___default.a.connect('mongodb://' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.user + ':' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.pass + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.host + ':' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.port + '/' + __WEBPACK_IMPORTED_MODULE_3__config__["a" /* default */].database.dbname + '?authSource=admin');
 
 var db = __WEBPACK_IMPORTED_MODULE_1_mongoose___default.a.connection;
 
@@ -1062,7 +1058,7 @@ module.exports = {
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'nuxt-blog' }]
   },
   env: {
-    HOST_URL: process.env.HOST_URL || 'http://127.0.0.1:3000'
+    HOST_URL: 'http://115.159.104.224' || 'http://127.0.0.1:3000'
   },
   /*
   ** Global CSS
