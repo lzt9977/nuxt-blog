@@ -3,12 +3,17 @@ import chalk from 'chalk'
 const log = console.log
 import config from '../config'
 
-mongoose.connect(`mongodb://${config.database.user}:${config.database.pass}${config.database.host}:${config.database.port}/${config.database.dbname}?authSource=admin`)
+mongoose.connect(`mongodb://${config.database.host}:${config.database.port}`, {
+  authSource: config.database.dbname,
+  user: config.database.username,
+  pass: config.database.password,
+  dbName: config.database.dbname
+})
 
 const db = mongoose.connection
 
-db.on('error', () => {
-  log(chalk.red('connection error:'))
+db.on('error', (err) => {
+  log(chalk.red('connection error:'+ err))
 })
 
 db.once('open', async () => {

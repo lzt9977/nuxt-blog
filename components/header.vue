@@ -15,8 +15,9 @@
             :index="item.link + ''"
             :key="index"
             @click="jump(item.link)"
-            v-if="(item.isAuth && $store.state.token) || !item.isAuth"
-          >{{item.name}}</el-menu-item>
+            v-if="item.auth == undefined || ( item.auth && $store.state.token ) || ( !item.auth && !$store.state.token)"
+          >{{item.name}}
+          </el-menu-item>
         </el-menu>
       </el-col>
       <el-col :span="2">
@@ -31,51 +32,51 @@
   import fetch from '../plugins/fetch'
 
   export default {
-    created(){
+    created () {
       this.$store.commit('NAV_INDEX', `/${this.$route.path.split('/')[1]}`)
     },
     watch: {
-      '$route'(newVal){
+      '$route' (newVal) {
         this.$store.commit('NAV_INDEX', `/${newVal.path.split('/')[1]}`)
-      }
+      },
     },
-    data(){
+    data () {
       return {
         navItems: [
-          {name: '首页', link: '/', isAuth: false},
+          {name: '首页', link: '/'},
           // {name: '登录', link: '/login', isAuth: false},
-           {name: '注册', link: '/reg', isAuth: false},
-          {name: '发布', link: '/publish', isAuth: true},
+          {name: '注册', link: '/reg', auth: false},
+          {name: '发布', link: '/publish', auth: true},
         ],
       }
     },
     methods: {
-      jump(index){
+      jump (index) {
         this.$store.commit('NAV_INDEX', index)
         this.$router.push(index)
       },
-      logout(){
-        fetch('/api/logout',{}, this.$store.state.token).then(res => {
-          if(res.data.code === 0){
+      logout () {
+        fetch('/api/logout', {}, this.$store.state.token).then(res => {
+          if (res.data.code === 0) {
             this.$store.commit('SET_TOKEN', '')
             this.$message({
               message: '退出成功',
-              type: 'success'
+              type: 'success',
             })
-          }else if(res.data.code === 600){
+          } else if (res.data.code === 600) {
             this.$store.commit('SET_TOKEN', '')
           }
         })
       },
-      login(){
+      login () {
         this.$router.push('/login')
-      }
-    }
+      },
+    },
   }
 </script>
 
 <style scoped>
-  .header{
+  .header {
     background: #545c64;
     width: 100%;
   }

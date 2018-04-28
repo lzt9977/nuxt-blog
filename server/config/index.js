@@ -1,5 +1,6 @@
 import errorCode from './errorCode'
 const dbname = process.env.NODE_ENV === 'development' ? 'test' : 'prod'
+// const dbname = 'prod'
 
 export default {
   app: {
@@ -11,7 +12,7 @@ export default {
     host: '127.0.0.1',
     port: 27017,
     dbname: dbname,
-    username: 'admin',
+    username: 'master',
     password: '123456',
     options: {
     }
