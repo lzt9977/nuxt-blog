@@ -55,7 +55,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon ./start.js",
-    "build": "nuxt build && backpack build",
+    "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "pro": "nuxt build && cross-env NODE_ENV=production pm2 start ./start.js"
   },
